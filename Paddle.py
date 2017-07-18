@@ -6,11 +6,11 @@ pygame.init()
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Pong')
+pygame.display.set_caption("Paddle")
 
 PADDLE_WIDTH = 60
 PADDLE_HEIGHT = 10
-paddle = pygame.Rect(10, SCREEN_HEIGHT - PADDLE_HEIGHT - 10, PADDLE_WIDTH, PADDLE_HEIGHT)
+paddle = pygame.Rect(10, SCREEN_HEIGHT - PADDLE_HEIGHT/2, PADDLE_WIDTH, PADDLE_HEIGHT)
 PADDLE_COLOR = pygame.color.Color("orange")
 
 
