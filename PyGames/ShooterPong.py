@@ -24,7 +24,7 @@ def initialize():
     global ball_pos, ball_vel
     paddle_pos = [SCREEN_WIDTH/2 - 40, SCREEN_HEIGHT - PADDLE_HEIGHT/2]
     ball_pos = [random.randint(20,SCREEN_WIDTH-20), SCREEN_HEIGHT / 2]
-    horzontal = random.randrange(1, 2)
+    horzontal = random.randrange(-2, 2)
     vertical = random.randrange(3, 6)
     ball_vel = [horzontal, vertical]
 
@@ -60,7 +60,6 @@ def draw(canvas):
         ball_vel[0] = - ball_vel[0]
     elif int(ball_pos[0]) > SCREEN_WIDTH-BALL_RADIUS:
         ball_vel[0] = - ball_vel[0]
-
 
     # ball collision with a paddle
     if int(ball_pos[1]) >= SCREEN_HEIGHT - BALL_RADIUS - PADDLE_HEIGHT \
@@ -106,7 +105,6 @@ def play():
             elif event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-
 
         pygame.display.update()
         fps.tick(60)
