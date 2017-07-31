@@ -5,6 +5,8 @@ import re
 # \w will match any word character: alphanumeric characters and underscores
 # [^] matches whatever is NOT inside of brackets
 # X{n} matches X n times
+# * is 0 or more, + is 1 or more
+# \b assert position at a word boundary
 
 test_string1 = input()
 regex_pattern = r'the'
@@ -29,5 +31,6 @@ regex_pattern = r'\S\S\S\s\S\S\S$'
 match = re.search(regex_pattern, test_string4).group()
 print("Number of matches:   ", len(match))
 
-regex_pattern1 = r'\.{2,5}$'	# from 2 to 5 dots inclusively
+regex_pattern1 = r'\.{2,5}$'    # from 2 to 5 dots inclusively
 regex_pattern2 = r'\d{3,}$'		# 3 or more digits
+
