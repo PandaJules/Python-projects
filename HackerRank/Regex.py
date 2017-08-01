@@ -33,4 +33,10 @@ print("Number of matches:   ", len(match))
 
 regex_pattern1 = r'\.{2,5}$'    # from 2 to 5 dots inclusively
 regex_pattern2 = r'\d{3,}$'		# 3 or more digits
+regex_pattern3 = r'^(Mr|Mrs|Ms|Dr|Er)\.[A-Za-z]+$'  # () for group capturing and | for OR
+
+ipv4 = r'^((1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])$'
+ipv6 = r'^([0-9a-f]+:){7}[0-9a-f]+$'
+
+
 
