@@ -26,7 +26,7 @@ def interquartilerange(arr, frequencies):
         full += [a] * f
     full.sort()
     N = len(full)
-    if (N % 2 == 0):
+    if N % 2 == 0:
         q3 = median(full[N // 2:])
     else:
         q3 = median(full[N // 2 + 1:])
@@ -44,31 +44,48 @@ def stddev(arr):
 
 # Binomial
 def comb(n, x):
-    return math.factorial(n) / (math.factorial(x) * math.factorial(n-x))
+    return math.factorial(n) / (math.factorial(x) * math.factorial(n - x))
 
 
 def binom(x, n, p):
-    return comb(n, x) * p**x * (1-p)**(n-x)
+    return comb(n, x) * p ** x * (1 - p) ** (n - x)
 
 
-def cum (n, p, low, high):
+def cum(n, p, low, high):
     return sum([binom(i, n, p) for i in range(low, high)])
+
 
 sb = np.random.binomial(100, 0.2)
 sg = np.random.geometric(p=0.35)
 
+
 # Geometric
 def geom(success, first_success_attempt):
-	assert 0<=success<=1
-	assert first_success_attempt>=1
-	return ((1-success)**(first_success_attempt-1)) * success
+    assert 0 <= success <= 1
+    assert first_success_attempt >= 1
+    return ((1 - success) ** (first_success_attempt - 1)) * success
+
 
 # Poisson
 def pois(mean, value):
-	return(math.exp(-mean)*mean**value/math.factorial(value))
+    return math.exp(-mean) * mean ** value / math.factorial(value)
+
 
 # Normal
 def cdf(x, mean, std):
-	# cumulative distribution function
-	return 0.5 * (1 + math.erf((x - mean) / (std * (2 ** 0.5))))
+    # cumulative distribution function
+    return 0.5 * (1 + math.erf((x - mean) / (std * (2 ** 0.5))))
 
+
+def pearson_correlation_coefficient():
+    from statistics import mean, pstdev
+
+    n = int(input())
+    x = list(map(float, input().split()))
+    y = list(map(float, input().split()))
+
+    top = sum([a * b for a, b in zip([i - mean(x) for i in x], [i - mean(y) for i in y])])
+    bottom = n * pstdev(x) * pstdev(y)
+    rho = top / bottom
+
+    print(round(rho, 3))
