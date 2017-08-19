@@ -4,7 +4,7 @@ play = True
 while play:
     secret = randint(0, 4)
     guess = input("I thought of a number. Guess it:  ")
-    if secret == guess:
+    if str(secret) == guess:
         print ("Wow, you guessed it!")
     else:
         print ("Too bad :(. It was {}".format(secret))
