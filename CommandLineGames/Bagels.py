@@ -1,13 +1,13 @@
 import random
 
 
-def getDigits():
+def get_digits():
     # Get the number of digits for the secret number
     print("Let's play BAGELS!")
     while True:
-        num_digits = input("How many digits do you want in your number?   ")
+        num_digits = int(input("How many digits do you want in your number?   "))
         if 0 < num_digits < 10:
-            return int(num_digits)
+            return num_digits
         else:
             print("Please give a number of digits 1-5")
             print("")
@@ -23,7 +23,7 @@ def introduction(num_digits):
     print('  Bagels       No digit is correct.')
 
 
-def printClues(user_guess, secret_number):
+def print_clues(user_guess, secret_number):
     # Analyse digits of the guessed number and print Fermi/Pico/Bagels
     if user_guess == secret_number:
         print("You won! That's what I guessed")
@@ -37,7 +37,7 @@ def printClues(user_guess, secret_number):
         if len(clue) == 0:
             print("Bagels")
         else:
-            print (clue)
+            print(clue)
 
 
 def play(num_digits):
@@ -50,7 +50,7 @@ def play(num_digits):
             user_guess = input('Your guess: ')
 
         # Arguments are arrays of integers that are digits of user_guess and secret_number
-        printClues([int(d1) for d1 in str(user_guess)], [int(d2) for d2 in str(secret_number)])
+            print_clues([int(d1) for d1 in str(user_guess)], [int(d2) for d2 in str(secret_number)])
 
         if int(user_guess) == secret_number:
             break
@@ -63,7 +63,7 @@ def play_again_prompt():
 
 
 def start():
-    num_digits = getDigits()
+    num_digits = get_digits()
     introduction(num_digits)
     play(num_digits)
     play_again_prompt()

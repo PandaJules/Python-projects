@@ -1,6 +1,6 @@
 import random
 import pygame, sys
-import Colours
+from PyGames import Colours
 from pygame.locals import *
 
 pygame.init()
@@ -11,17 +11,16 @@ SCREEN_HEIGHT = 500
 SCALE = 60
 
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Dots")
+pygame.display.set_caption("Dobble")
 
-img1 = pygame.image.load("/Users/Julia/Desktop/candle.png")
+img1 = pygame.image.load_extended("/Users/Julia/Desktop/candle.png")
 i1 = pygame.transform.scale(img1, (SCALE, SCALE))
-img2 = pygame.image.load("/Users/Julia/Desktop/milk.png")
+img2 = pygame.image.load_extended("/Users/Julia/Desktop/milk.png")
 i2 = pygame.transform.scale(img2, (SCALE, SCALE))
-img3 = pygame.image.load("/Users/Julia/Desktop/cheese.png")
+img3 = pygame.image.load_extended("/Users/Julia/Desktop/cheese.png")
 i3 = pygame.transform.scale(img3, (SCALE, SCALE))
-img4 = pygame.image.load("/Users/Julia/Desktop/eye.png")
+img4 = pygame.image.load_extended("/Users/Julia/Desktop/eye.png")
 i4 = pygame.transform.scale(img4, (SCALE, SCALE))
-
 
 
 def randomXY():
@@ -37,31 +36,29 @@ def displaySymbols():
     window.blit(i4, randomXY())
 
 
-
 def draw(X):
     window.fill(X)
-
 
 
 def key_press(event):
     if event.key == K_LEFT:
         displaySymbols()
     elif event.key == K_SPACE:
-        draw(Colours.RED)
+        draw(Colours.WHITE)
 
 
 def play():
     draw(Colours.WHITE)
+    print(pygame.image.get_extended())
     while True:
-
         for event in pygame.event.get():
-
             if event.type == KEYDOWN:
                 key_press(event)
             elif event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-
         pygame.display.update()
 
-play()
+
+if __name__ == '__main__':
+    play()

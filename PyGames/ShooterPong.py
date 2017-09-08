@@ -1,6 +1,6 @@
 import random
 import pygame, sys
-import Colours
+from PyGames import Colours
 from pygame.locals import *
 
 pygame.init()
@@ -47,7 +47,7 @@ def draw(canvas):
     ball_pos[1] += int(ball_vel[1])
 
     # draw a ball and a paddle
-    pygame.draw.circle(canvas, Colours.PURPLE, ball_pos, BALL_RADIUS)
+    pygame.draw.circle(canvas, Colours.PURPLE, list(map(int, ball_pos)), BALL_RADIUS)
     pygame.draw.polygon(canvas, Colours.GREEN, [[paddle_pos[0] - PADDLE_WIDTH / 2, paddle_pos[1] - PADDLE_HEIGHT / 2],
                                                 [paddle_pos[0] - PADDLE_WIDTH / 2, paddle_pos[1] + PADDLE_HEIGHT / 2],
                                                 [paddle_pos[0] + PADDLE_WIDTH / 2, paddle_pos[1] + PADDLE_HEIGHT / 2],
@@ -63,7 +63,7 @@ def draw(canvas):
 
     # ball collision with a paddle
     if int(ball_pos[1]) >= SCREEN_HEIGHT - BALL_RADIUS - PADDLE_HEIGHT \
-            and int(ball_pos[0]) in range(paddle_pos[0] - PADDLE_WIDTH / 2, paddle_pos[0] + PADDLE_WIDTH / 2):
+            and int(ball_pos[0]) in range(int(paddle_pos[0]) - PADDLE_WIDTH // 2, int(paddle_pos[0]) + PADDLE_WIDTH // 2):
         ball_vel[1] = -ball_vel[1]
         ball_vel[0] *= 1.1
         ball_vel[1] *= 1.1
