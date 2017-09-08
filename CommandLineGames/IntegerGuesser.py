@@ -8,9 +8,10 @@ while play:
         print("Wow, you guessed it!")
     else:
         print("Too bad :(. It was {}".format(secret))
-        answer = input("Would you like to play again?(Enter 'y' for yes; 'n' for no): ")
-        if answer == 'n':
-            print("Thanks for playing.")
-            input("Press Enter to exit.")
-            play = False
+    
+    answer = input("Would you like to play again?(Enter 'y' for yes; 'n' for no): ")
+    if answer == 'n':
+        print("Thanks for playing.")
+        input("Press Enter to exit.")
+        play = False
 sys.exit(0)
